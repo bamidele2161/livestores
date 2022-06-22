@@ -1,13 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styles*/
+
+.navbar-container{
+  height: 10vh;
+  justify-content: space-between;
+  display: flex;
+  padding: 0px 100px;
+  align-items: center;
+}
+.navbar-brand{
+  font-weight: 700;
+}
+.navbar-container span{
+  color: #16a783;
+}
+.cart-div{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.cart-num{
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  background-color: red;
+  height: 20px;
+  width: 20px;
+}
+.cart-num p{
+  color: white;
+}
+.cart-icon{
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .navbar-container{
+    padding: 0px 50px;
+  }
+}
+
+/* Home Styles*/
+
+.Home-container{
+  padding: 180px 100px;
+  background-color: #f3f3f3;
+}
+.card-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+
+}
+.card{
+  border-radius: 5px;
+  box-shadow: 1px 3px 6px 2px #d0d3d8;
+  transition: .6s ease-out;
+  position: relative;
+  background-color: white;
+}
+.card-image{
+  height: 65%;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.card-description{
+  height: 35%;
+  padding: 0px 10px;
+  border-top: solid 1px #d0d3d8;
+}
+
+.card:hover{
+  transform: translateY(5px);
+}
+.card:hover:before{
+  opacity: 1;
+}
+.card:hover .content{
+  opacity: 1;
+  transform: translateY(0);
+}
+.card:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #16a783, #16a783, transparent);
+  z-index: 2;
+  transition: .5s;
+  opacity: 0;
+}
+.content{
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 0;
+  top: 0;
+  transform: translateY(60px);
+  transition: 0.5s;
+  padding: 0px 20px;
+}
+.drug-paragraph{
+  margin-top: -200px;
+}
+.add-to-cart{
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+.drug-name{
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.sk-price{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  
+}
+.sku{
+  font-size: 14px;
+  color: rgb(69, 70, 69);
+}
+.price{
+  font-weight: bold;
+  color: #16a783;
+  font-size: 18px;
+}
+
+/* Media Home Styles*/
+
+@media only screen and (max-width: 1100px) {
+  .Home-container{
+    padding: 100px 200px;
+  }
+  .card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 20px;
+  
+  }
+}
+@media only screen and (max-width: 900px) {
+  .Home-container{
+    padding: 100px 150px;
+  }
+  .card-container{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  
+  }
+}
+@media only screen and (max-width: 800px) {
+  .Home-container{
+    padding: 100px 50px;
+  }
+  .card-container{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  
+  }
+}
+@media only screen and (max-width: 700px) {
+  .Home-container{
+    padding: 100px 50px;
+  }
+  .card-container{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  
+  }
+  .drug-paragraph{
+    font-size: 14px;
+    margin-top: -180px;
+  }
+
+.drug-name{
+  font-size: 20px;
+}
+
+.sku{
+  font-size: 12px;
+}
+.price{
+  font-size: 16px;
+}
+}
+
+@media only screen and (max-width: 600px) {
+  .card-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .Home-container{
+    padding: 50px;
+  }
+  .card-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  
+  }
+  .card{
+    height: 350px;
+
+  }
+}
+
+/* CartContainer Styles*/
+
+.cart-item-container{
+  position: absolute;
+  height: 100vh;
+  width: 30vw;
+  top: 0;
+  right: 0;
+  background-color: #282828;
+  z-index: 3;
+  padding: 20px;
+}
+.cart-first-row{
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+}
+.close-btn{
+  cursor: pointer;
+  color: white;
+}
+.close-icon{
+  font-size: 20px;
+}
+.second-row{
+  margin: 20px 0px;
+  color: white;
+  background-color: #181818;
+  padding: 0px 10px;
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+.clear{
+  cursor: pointer;
+}
+.cart-img{
+  height: 50px;
+  width: 80px;
+}
+.clicked-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-sub{
+  display: flex;
+  gap: 10px;
+}
+.add-sub p{
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.ima-name{
+  display: flex;
+  gap: 5px;
+}
+.third-row{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.third-row h2{
+  float: left;
+  color: white;
+}
+.third-row button{
+  border: none;
+  background-color:#16a783;
+  padding: 14px 24px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 18px;
+
+}
+.empty-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 20px;
+}
+.empty-div p{
+  color: white;
+  margin-bottom: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .cart-item-container{
+    width: 95vw;
+    height: 100vh;
+  }
 }
